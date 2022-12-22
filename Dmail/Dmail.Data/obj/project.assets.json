@@ -1,0 +1,108 @@
+{
+  "version": 3,
+  "targets": {
+    "net7.0": {
+      "Dmail.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "Dmail.Presentation": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Dmail.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Dmail.Domain.dll": {}
+        }
+      },
+      "Dmail.Presentation/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/Dmail.Presentation.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Dmail.Presentation.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Dmail.Domain/1.0.0": {
+      "type": "project",
+      "path": "../Dmail.Domain/Dmail.Domain.csproj",
+      "msbuildProject": "../Dmail.Domain/Dmail.Domain.csproj"
+    },
+    "Dmail.Presentation/1.0.0": {
+      "type": "project",
+      "path": "../Dmail.Presentation/Dmail.Presentation.csproj",
+      "msbuildProject": "../Dmail.Presentation/Dmail.Presentation.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net7.0": [
+      "Dmail.Domain >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "/Users/dbaric/.nuget/packages/": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "/Users/dbaric/Documents/Internship/Internship-7-EF-Dmail/Dmail/Dmail.Data/Dmail.Data.csproj",
+      "projectName": "Dmail.Data",
+      "projectPath": "/Users/dbaric/Documents/Internship/Internship-7-EF-Dmail/Dmail/Dmail.Data/Dmail.Data.csproj",
+      "packagesPath": "/Users/dbaric/.nuget/packages/",
+      "outputPath": "/Users/dbaric/Documents/Internship/Internship-7-EF-Dmail/Dmail/Dmail.Data/obj/",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "/Users/dbaric/.nuget/NuGet/NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net7.0"
+      ],
+      "sources": {
+        "/usr/local/share/dotnet/library-packs": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "projectReferences": {
+            "/Users/dbaric/Documents/Internship/Internship-7-EF-Dmail/Dmail/Dmail.Domain/Dmail.Domain.csproj": {
+              "projectPath": "/Users/dbaric/Documents/Internship/Internship-7-EF-Dmail/Dmail/Dmail.Domain/Dmail.Domain.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net7.0": {
+        "targetAlias": "net7.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.100/RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

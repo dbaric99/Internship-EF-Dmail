@@ -1,0 +1,15 @@
+/Users/dbaric/Documents/Internship/Internship-7-EF-Dmail/Dmail/Dmail.Presentation/bin/Debug/net7.0/Dmail.Presentation
+/Users/dbaric/Documents/Internship/Internship-7-EF-Dmail/Dmail/Dmail.Presentation/bin/Debug/net7.0/Dmail.Presentation.deps.json
+/Users/dbaric/Documents/Internship/Internship-7-EF-Dmail/Dmail/Dmail.Presentation/bin/Debug/net7.0/Dmail.Presentation.runtimeconfig.json
+/Users/dbaric/Documents/Internship/Internship-7-EF-Dmail/Dmail/Dmail.Presentation/bin/Debug/net7.0/Dmail.Presentation.dll
+/Users/dbaric/Documents/Internship/Internship-7-EF-Dmail/Dmail/Dmail.Presentation/bin/Debug/net7.0/Dmail.Presentation.pdb
+/Users/dbaric/Documents/Internship/Internship-7-EF-Dmail/Dmail/Dmail.Presentation/obj/Debug/net7.0/Dmail.Presentation.csproj.AssemblyReference.cache
+/Users/dbaric/Documents/Internship/Internship-7-EF-Dmail/Dmail/Dmail.Presentation/obj/Debug/net7.0/Dmail.Presentation.GeneratedMSBuildEditorConfig.editorconfig
+/Users/dbaric/Documents/Internship/Internship-7-EF-Dmail/Dmail/Dmail.Presentation/obj/Debug/net7.0/Dmail.Presentation.AssemblyInfoInputs.cache
+/Users/dbaric/Documents/Internship/Internship-7-EF-Dmail/Dmail/Dmail.Presentation/obj/Debug/net7.0/Dmail.Presentation.AssemblyInfo.cs
+/Users/dbaric/Documents/Internship/Internship-7-EF-Dmail/Dmail/Dmail.Presentation/obj/Debug/net7.0/Dmail.Presentation.csproj.CoreCompileInputs.cache
+/Users/dbaric/Documents/Internship/Internship-7-EF-Dmail/Dmail/Dmail.Presentation/obj/Debug/net7.0/Dmail.Presentation.dll
+/Users/dbaric/Documents/Internship/Internship-7-EF-Dmail/Dmail/Dmail.Presentation/obj/Debug/net7.0/refint/Dmail.Presentation.dll
+/Users/dbaric/Documents/Internship/Internship-7-EF-Dmail/Dmail/Dmail.Presentation/obj/Debug/net7.0/Dmail.Presentation.pdb
+/Users/dbaric/Documents/Internship/Internship-7-EF-Dmail/Dmail/Dmail.Presentation/obj/Debug/net7.0/Dmail.Presentation.genruntimeconfig.cache
+/Users/dbaric/Documents/Internship/Internship-7-EF-Dmail/Dmail/Dmail.Presentation/obj/Debug/net7.0/ref/Dmail.Presentation.dll

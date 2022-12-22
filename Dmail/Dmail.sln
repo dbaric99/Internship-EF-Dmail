@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dmail.Presentation", "Dmail.Presentation\Dmail.Presentation.csproj", "{421E4136-AEC1-4787-BA3A-71A0A4A472AE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dmail.Domain", "Dmail.Domain\Dmail.Domain.csproj", "{09C7BE2A-8B6C-4569-9CD6-83FC7D36499F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dmail.Data", "Dmail.Data\Dmail.Data.csproj", "{05AA6E87-7C3F-4D2C-BFA7-29CE0AB1B6B1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{421E4136-AEC1-4787-BA3A-71A0A4A472AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{421E4136-AEC1-4787-BA3A-71A0A4A472AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{421E4136-AEC1-4787-BA3A-71A0A4A472AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{421E4136-AEC1-4787-BA3A-71A0A4A472AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09C7BE2A-8B6C-4569-9CD6-83FC7D36499F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09C7BE2A-8B6C-4569-9CD6-83FC7D36499F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09C7BE2A-8B6C-4569-9CD6-83FC7D36499F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09C7BE2A-8B6C-4569-9CD6-83FC7D36499F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05AA6E87-7C3F-4D2C-BFA7-29CE0AB1B6B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05AA6E87-7C3F-4D2C-BFA7-29CE0AB1B6B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05AA6E87-7C3F-4D2C-BFA7-29CE0AB1B6B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05AA6E87-7C3F-4D2C-BFA7-29CE0AB1B6B1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
