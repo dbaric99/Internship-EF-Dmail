@@ -6,7 +6,7 @@ public class Account : User
     public bool Deactivated { get; set; } = false;
     public bool Spam { get; set; } = false;
 
-    public ICollection<Email> Emails { get; set; } = new List<Email>();
+    public ICollection<Email> AllEmail { get; set; } = new List<Email>();
     public ICollection<Event> Events { get; set; } = new List<Event>();
 
     public Account() : base()

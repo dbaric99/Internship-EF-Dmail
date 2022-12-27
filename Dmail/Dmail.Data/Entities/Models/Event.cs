@@ -6,6 +6,7 @@ public class Event
     public string Title { get; set; }
     public DateTime DateAndTime { get; set; }
     
+    public int SenderId { get; set; }
     public Account Sender { get; set; }
     public ICollection<Account> Attendees { get; set; } = new List<Account>();
 
