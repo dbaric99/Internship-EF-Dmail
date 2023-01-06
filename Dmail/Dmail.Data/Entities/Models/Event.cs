@@ -1,17 +1,12 @@
 namespace Dmail.Data.Entities.Models;
 
-public class Event
+public class Event : MailType
 {
-    public int Id { get; set; }
-    public string Title { get; set; }
-    public DateTime DateAndTime { get; set; }
-    
-    public int SenderId { get; set; }
-    public Account Sender { get; set; }
-    public ICollection<Account> Attendees { get; set; } = new List<Account>();
+    public ICollection<Attendance> EventAttendance { get; set; } = new List<Attendance>();
 
-    public Event()
+    public Event(Account sender, string title, DateTime dateAndTime, List<Attendance> attendances) : base(sender, title, dateAndTime)
     {
-            
+        foreach (var attendee in attendances)
+            EventAttendance.Add(attendee);
     }
 }
