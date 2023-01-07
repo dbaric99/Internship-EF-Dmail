@@ -8,12 +8,10 @@ public abstract class MailType
     public bool IsRead { get; set; }
     
     public int SenderId { get; set; }
-    public Account Sender { get; set; }
+    public Account Sender { get; set; } = null!;
     
-    public MailType(Account sender, string title, DateTime dateAndTime)
+    public MailType(string title, DateTime dateAndTime)
     {
-        Sender = sender;
-        SenderId = sender.Id;
         Title = title;
         DateAndTime = dateAndTime;
     }

@@ -9,12 +9,4 @@ public class Attendance
     public Account Attendee { get; set; }
     public int EventId { get; set; }
     public Event Event { get; set; }
-
-    public Attendance(Account attendee, Event ev)
-    {
-        Attendee = attendee;
-        AttendeeId = attendee.Id;
-        Event = ev;
-        EventId = ev.Id;
-    }
 }

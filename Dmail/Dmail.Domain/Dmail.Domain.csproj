@@ -7,7 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Dmail.Presentation\Dmail.Presentation.csproj" />
+      <ProjectReference Include="..\Dmail.Data\Dmail.Data.csproj" />
     </ItemGroup>
 
 </Project>

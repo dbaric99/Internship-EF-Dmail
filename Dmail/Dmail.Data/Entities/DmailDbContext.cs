@@ -1,6 +1,8 @@
 using Dmail.Data.Entities.Models;
 using Dmail.Data.Seed;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.Extensions.Configuration;
 
 namespace Dmail.Data.Entities;
 
@@ -45,7 +47,32 @@ public class DmailDbContext : DbContext
             .WithMany(r => r.ReceivedEmails)
             .HasForeignKey(e => e.ReceiverId);
 
-        DatabaseSeeder.Seed(modelBuilder);
+        modelBuilder.Entity<Account>()
+            .HasIndex(a => a.Email)
+            .IsUnique();
+
+        //DatabaseSeeder.Seed(modelBuilder);
         base.OnModelCreating(modelBuilder);
+    }
+}
+
+public class DmailDbContextFactory : IDesignTimeDbContextFactory<DmailDbContext>
+{
+    public DmailDbContext CreateDbContext(string[] args)
+    {
+        var config = new ConfigurationBuilder()
+            .SetBasePath(Directory.GetCurrentDirectory())
+            .AddXmlFile("App.config")
+            .Build();
+
+        config.Providers
+            .First()
+            .TryGet("connectionStrings:add:DmailApp:connectionString", out var connectionString);
+
+        var options = new DbContextOptionsBuilder<DmailDbContext>()
+            .UseNpgsql(connectionString)
+            .Options;
+
+        return new DmailDbContext(options);
     }
 }

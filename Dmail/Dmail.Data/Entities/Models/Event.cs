@@ -4,9 +4,8 @@ public class Event : MailType
 {
     public ICollection<Attendance> EventAttendance { get; set; } = new List<Attendance>();
 
-    public Event(Account sender, string title, DateTime dateAndTime, List<Attendance> attendances) : base(sender, title, dateAndTime)
+    public Event(string title, DateTime dateAndTime) : base(title, dateAndTime)
     {
-        foreach (var attendee in attendances)
-            EventAttendance.Add(attendee);
+        
     }
 }
