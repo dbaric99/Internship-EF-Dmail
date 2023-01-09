@@ -18,38 +18,38 @@ public static class PasswordHelper
     public static string EncryptPassword(string password)
     {
         var toEncryptedArr = Encoding.UTF8.GetBytes(password);
-        var objMD5CryptoService = new MD5CryptoServiceProvider();
-        var securityKeyArr = objMD5CryptoService.ComputeHash(Encoding.UTF8.GetBytes(SecurityKey));
+        var objMd5CryptoService = new MD5CryptoServiceProvider();
+        var securityKeyArr = objMd5CryptoService.ComputeHash(Encoding.UTF8.GetBytes(SecurityKey));
         
-        objMD5CryptoService.Clear();
+        objMd5CryptoService.Clear();
 
-        var objTripleDESCCryptoService = new TripleDESCryptoServiceProvider();
-        objTripleDESCCryptoService.Key = securityKeyArr;
-        objTripleDESCCryptoService.Mode = CipherMode.ECB;
-        objTripleDESCCryptoService.Padding = PaddingMode.PKCS7;
+        var objTripleDescCryptoService = new TripleDESCryptoServiceProvider();
+        objTripleDescCryptoService.Key = securityKeyArr;
+        objTripleDescCryptoService.Mode = CipherMode.ECB;
+        objTripleDescCryptoService.Padding = PaddingMode.PKCS7;
 
-        var objCryptoTransform = objTripleDESCCryptoService.CreateEncryptor();
+        var objCryptoTransform = objTripleDescCryptoService.CreateEncryptor();
         var resultArr = objCryptoTransform.TransformFinalBlock(toEncryptedArr, 0, toEncryptedArr.Length);
-        objTripleDESCCryptoService.Clear();
+        objTripleDescCryptoService.Clear();
 
         return Convert.ToBase64String(resultArr, 0, resultArr.Length);
     }
 
-    public static string DecryptPassword(string cryptedPassword)
+    public static string DecryptPassword(string encryptedPassword)
     {
-        var toEncryptArr = Convert.FromBase64String(cryptedPassword);
-        var objMD5CryptoService = new MD5CryptoServiceProvider();
-        var securityKeyArr = objMD5CryptoService.ComputeHash(Encoding.UTF8.GetBytes(SecurityKey));
+        var toEncryptArr = Convert.FromBase64String(encryptedPassword);
+        var objMd5CryptoService = new MD5CryptoServiceProvider();
+        var securityKeyArr = objMd5CryptoService.ComputeHash(Encoding.UTF8.GetBytes(SecurityKey));
         
-        objMD5CryptoService.Clear();
+        objMd5CryptoService.Clear();
 
-        var objTripleDESCCryptoService = new TripleDESCryptoServiceProvider();
-        objTripleDESCCryptoService.Key = securityKeyArr;
-        objTripleDESCCryptoService.Mode = CipherMode.ECB;
+        var objTripleDescCryptoService = new TripleDESCryptoServiceProvider();
+        objTripleDescCryptoService.Key = securityKeyArr;
+        objTripleDescCryptoService.Mode = CipherMode.ECB;
 
-        var objCryptoTransform = objTripleDESCCryptoService.CreateDecryptor();
+        var objCryptoTransform = objTripleDescCryptoService.CreateDecryptor();
         var resultArr = objCryptoTransform.TransformFinalBlock(toEncryptArr, 0, toEncryptArr.Length);
-        objTripleDESCCryptoService.Clear();
+        objTripleDescCryptoService.Clear();
 
         return Encoding.UTF8.GetString(resultArr);
     }
