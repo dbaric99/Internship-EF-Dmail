@@ -4,7 +4,7 @@ using Dmail.Presentation.Extensions;
 
 namespace Dmail.Presentation.Factories;
 
-public class UserActionsFactory
+public class AuthenticationActionsFactory
 {
     public static IList<IAction> Create()
     {

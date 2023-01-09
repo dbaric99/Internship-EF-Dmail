@@ -6,7 +6,7 @@ namespace Dmail.Presentation.Factories;
 
 public class DashboardActionsFactory
 {
-    public static IList<IAction> CreateActions()
+    public static IList<IAction> Create()
     {
         var actions = new List<IAction>
         {

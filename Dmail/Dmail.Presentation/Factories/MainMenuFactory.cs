@@ -10,6 +10,8 @@ public class MainMenuFactory
     {
         var actions = new List<IAction>
         {
+            AuthenticationActionsFactory.Create(),
+            DashboardActionsFactory.Create(),
             new ExitMenuAction(),
         };
         

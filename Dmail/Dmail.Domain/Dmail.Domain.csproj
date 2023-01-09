@@ -10,4 +10,9 @@
       <ProjectReference Include="..\Dmail.Data\Dmail.Data.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Factories" />
+      <Folder Include="Models" />
+    </ItemGroup>
+
 </Project>
