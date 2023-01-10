@@ -1,20 +1,19 @@
 using Dmail.Presentation.Abstractions;
 using Dmail.Presentation.Actions;
+using Dmail.Presentation.Actions.Dashboard;
 using Dmail.Presentation.Extensions;
 
 namespace Dmail.Presentation.Factories;
 
 public class DashboardActionsFactory
 {
-    public static IList<IAction> Create()
+    public static DashboardAction Create()
     {
         var actions = new List<IAction>
         {
             new ExitMenuAction()
         };
-        
-        actions.SetIndices();
 
-        return actions;
+        return new DashboardAction(actions);
     }
 }

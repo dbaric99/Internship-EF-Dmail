@@ -5,5 +5,6 @@ public enum Response
     Success,
     Error,
     NoChanges,
-    NotFound
+    NotFound,
+    Found,
 }

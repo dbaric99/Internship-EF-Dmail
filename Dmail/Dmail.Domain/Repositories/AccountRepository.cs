@@ -38,4 +38,10 @@ public class AccountRepository : BaseRepository
         
         return SaveChanges();
     }
+
+    public Account? FindByEmail(string email)
+    {
+        var account = DbContext.Accounts.FirstOrDefault(a => a.Email == email);
+        return account;
+    }
 }
