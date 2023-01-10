@@ -20,6 +20,10 @@ public class MailBySenderAction : IAction
     }
     public void Open()
     {
-        
+        Console.WriteLine("Search from: ");
+        var searchToken = Console.ReadLine();
+
+        var selectedEvents = _eventRepository.SearchByAccountAddress(searchToken);
+        var selectedEmails = _emailRepository.SearchByAccountAddress(searchToken);
     }
 }

@@ -22,32 +22,23 @@ public class ReadMailAction : IAction
     }
     public void Open()
     {
-        var readEmails = _emailRepository.GetReadEmails();
-        if (readEmails.Count == 0)
-        {
-            Console.WriteLine("----- Empty -----");
-            return;
-        }
-        Console.WriteLine("----- Read Emails -----");
-        
-        var navigatedEmail = PrintMailAndSelect(readEmails.OrderByDescending(e=>e.DateAndTime).ToList());
+        var authUser = _cacheService.GetData<Account>("authUser");
 
-        if (navigatedEmail is not null)
+        List<Email> readEmails = null;
+        List<Event> readEvents = null;
+        if (_emailRepository.GetReadEmails() is not null)
         {
-            
+            readEmails = _emailRepository.GetReadEmails().Where(e=>e.Sender == authUser || e.Receiver == authUser).ToList();
         }
+
+        if (_eventRepository.GetReadEvents() is not null)
+        {
+            readEvents = _eventRepository.GetReadEvents().Where(e=>e.Sender == authUser || _eventRepository.CheckIfUserIsAttendingEvent(authUser.Id, e)).ToList();   
+        }
+
+        WritingHelper.HandleReadEmails(authUser, readEmails, _emailRepository);
+        WritingHelper.HandleReadEvents(authUser, readEvents, _eventRepository);
     }
 
-    public Email PrintMailAndSelect(List<Email> emails)
-    {
-        for (int i = 1; i < emails.Count; i++)
-        {
-            var current = emails[i-1];
-            Console.WriteLine($"{i} - {current.Title} - {current.Sender.Email}");
-        }
-
-        var num = InputHelper.NumberInput("Which email do you wish to open", 1, emails.Count);
-
-        return num == 0 ? null : emails[num - 1];
-    }
+   
 }

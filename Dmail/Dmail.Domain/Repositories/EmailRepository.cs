@@ -7,8 +7,6 @@ namespace Dmail.Domain.Repositories;
 
 public class EmailRepository : BaseRepository
 {
-    private List<ReadEmail> _readEmails = new();
-
     public EmailRepository(DmailDbContext dbContext) : base(dbContext)
     {
 
@@ -30,36 +28,28 @@ public class EmailRepository : BaseRepository
         return SaveChanges();
     }
 
-    public bool CheckIfRead(int emailId)
-    {
-        return _readEmails.FirstOrDefault(e => e.ReceivedEmail.Id == emailId).IsRead;
-    }
-
-    public void SetReadEmailStatus()
-    {
-        if (_readEmails.Count == 0)
-        {
-            foreach (var email in DbContext.Emails)
-            {
-                _readEmails.Add(new ReadEmail(email, null));
-            }
-        }
-    }
-
     public List<Email> GetReadEmails()
     {
-        SetReadEmailStatus();
-
-        return DbContext.Emails.Where(email => _readEmails.First(e => e.ReceivedEmail == email).IsRead).ToList();
+        return DbContext.Emails.Where(email => email.IsRead == true).ToList();
+    }
+    
+    public List<Email> GetUnReadEmails()
+    {
+        return DbContext.Emails.Where(email => email.IsRead == false).ToList();
     }
 
-    public void SetRead(int emailId)
+    public Response SetRead(int emailId)
     {
-        SetReadEmailStatus();
+        var emailToUpdate = DbContext.Emails.Find(emailId);
+        if (emailToUpdate is null) return Response.NotFound;
 
-        foreach (var email in _readEmails.Where(email => email.ReceivedEmail.Id == emailId))
-        {
-            email.IsRead = true;
-        }
+        emailToUpdate.IsRead = true;
+
+        return SaveChanges();
+    }
+    
+    public List<Email> SearchByAccountAddress(string search)
+    {
+        return DbContext.Emails.Where(e => e.Sender.Email.Contains(search)).ToList();
     }
 }
