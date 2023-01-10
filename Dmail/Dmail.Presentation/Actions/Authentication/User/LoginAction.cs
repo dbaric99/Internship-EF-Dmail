@@ -10,7 +10,7 @@ namespace Dmail.Presentation.Actions.User;
 public class LoginAction : IAction
 {
     private readonly AccountRepository _accountRepository;
-    private CacheService _cacheService = new CacheService();
+    private readonly CacheService _cacheService = new();
 
     public int MenuIndex { get; set; }
     public string Name { get; set; } = "User Login";
@@ -39,9 +39,9 @@ public class LoginAction : IAction
             
         Console.Write("Password: ");
         var password = PasswordHelper.PasswordInput();
-        if (password.Length == 0)
+        if (password != targetUser.Password)
         {
-            MessageHelper.PrintErrorMessage("Invalid password");
+            MessageHelper.PrintErrorMessage($"Password does not match with user: {email}");
             return;
         }
 

@@ -14,5 +14,6 @@ public class Account : User
     {
         Email = email;
         Password = password;
+        Deactivated = false;
     }
 }
