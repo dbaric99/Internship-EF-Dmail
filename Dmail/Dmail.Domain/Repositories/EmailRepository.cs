@@ -8,9 +8,10 @@ namespace Dmail.Domain.Repositories;
 public class EmailRepository : BaseRepository
 {
     private List<ReadEmail> _readEmails = new();
+
     public EmailRepository(DmailDbContext dbContext) : base(dbContext)
     {
-        
+
     }
 
     public Response Add(Email newEmail)
@@ -25,20 +26,40 @@ public class EmailRepository : BaseRepository
         if (emailToDelete is null) return Response.NotFound;
 
         DbContext.Emails.Remove(emailToDelete);
-        
+
         return SaveChanges();
     }
 
-    public bool CheckIfRead()
+    public bool CheckIfRead(int emailId)
     {
-        return true;
+        return _readEmails.FirstOrDefault(e => e.ReceivedEmail.Id == emailId).IsRead;
     }
 
-    public void SetRead()
+    public void SetReadEmailStatus()
     {
         if (_readEmails.Count == 0)
         {
-            
+            foreach (var email in DbContext.Emails)
+            {
+                _readEmails.Add(new ReadEmail(email, null));
+            }
+        }
+    }
+
+    public List<Email> GetReadEmails()
+    {
+        SetReadEmailStatus();
+
+        return DbContext.Emails.Where(email => _readEmails.First(e => e.ReceivedEmail == email).IsRead).ToList();
+    }
+
+    public void SetRead(int emailId)
+    {
+        SetReadEmailStatus();
+
+        foreach (var email in _readEmails.Where(email => email.ReceivedEmail.Id == emailId))
+        {
+            email.IsRead = true;
         }
     }
 }
