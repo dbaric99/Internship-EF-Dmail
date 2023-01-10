@@ -52,4 +52,9 @@ public class EmailRepository : BaseRepository
     {
         return DbContext.Emails.Where(e => e.Sender.Email.Contains(search)).ToList();
     }
+
+    public List<Email> SearchBySender(int senderId)
+    {
+        return DbContext.Emails.Where(email => email.SenderId == senderId).ToList();
+    }
 }

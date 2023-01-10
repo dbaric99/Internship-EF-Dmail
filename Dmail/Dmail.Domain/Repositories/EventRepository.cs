@@ -57,4 +57,9 @@ public class EventRepository : BaseRepository
     {
         return DbContext.Events.Where(ev => ev.Sender.Email.Contains(search)).ToList();
     }
+    
+    public List<Event> SearchBySender(int senderId)
+    {
+        return DbContext.Events.Where(ev => ev.SenderId == senderId).ToList();
+    }
 }
