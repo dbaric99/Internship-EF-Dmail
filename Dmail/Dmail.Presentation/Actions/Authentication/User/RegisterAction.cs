@@ -1,4 +1,5 @@
 using Dmail.Data.Entities.Models;
+using Dmail.Domain.Enums;
 using Dmail.Domain.Repositories;
 using Dmail.Presentation.Abstractions;
 using Dmail.Presentation.Helpers;
@@ -37,8 +38,9 @@ public class RegisterAction : IAction
         
         Console.Write("Password: ");
         var password = PasswordHelper.PasswordInput();
-        Console.WriteLine("Repeat password: ");
+        Console.Write("\nRepeat password: ");
         var repeatedPassword = PasswordHelper.PasswordInput();
+        Console.WriteLine();
 
         if (password != repeatedPassword)
         {
@@ -52,8 +54,7 @@ public class RegisterAction : IAction
 
         var newUser = new Data.Entities.Models.Account(email, password);
         
-        //TODO this next line is null, check why
         _accountRepository.Add(newUser);
-        _cacheService.SetData("authUser", newUser);
+        MessageHelper.PrintSuccessMessage("New user has been created!");
     }
 }

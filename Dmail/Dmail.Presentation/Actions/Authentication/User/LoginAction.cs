@@ -2,6 +2,7 @@ using System.Runtime.Caching;
 using Dmail.Domain.Enums;
 using Dmail.Domain.Repositories;
 using Dmail.Presentation.Abstractions;
+using Dmail.Presentation.Factories;
 using Dmail.Presentation.Helpers;
 using Dmail.Presentation.Services;
 
@@ -46,7 +47,10 @@ public class LoginAction : IAction
             Thread.Sleep(30000);
             return;
         }
-
+        Console.WriteLine(new String('-',25));
         _cacheService.SetData("authUser", targetUser);
+
+        var dashboardFactory = DashboardActionsFactory.Create();
+        dashboardFactory.Open();
     }
 }

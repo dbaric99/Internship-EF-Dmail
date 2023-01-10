@@ -4,20 +4,19 @@ using Dmail.Presentation.Services;
 
 namespace Dmail.Presentation.Actions.Outbox;
 
-public class OutboxAction : IAction
+public class NewEventAction : IAction
 {
-    private readonly EmailRepository _emailRepository;
     private readonly EventRepository _eventRepository;
     private readonly CacheService _cacheService = new();
     
     public int MenuIndex { get; set; }
-    public string Name { get; set; } = "Outbox(sent)";
+    public string Name { get; set; } = "Send new event";
 
-    public OutboxAction(EmailRepository emailRepository, EventRepository eventRepository)
+    public NewEventAction(EventRepository eventRepository)
     {
-        _emailRepository = emailRepository;
         _eventRepository = eventRepository;
     }
+
     public void Open()
     {
         

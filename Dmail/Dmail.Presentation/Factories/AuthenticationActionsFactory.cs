@@ -12,6 +12,7 @@ public class AuthenticationActionsFactory
 {
     public static AuthenticationAction Create()
     {
+        //TODO admin
         var actions = new List<IAction>
         {
             new LoginAction(RepositoryFactory.Create<AccountRepository>()),

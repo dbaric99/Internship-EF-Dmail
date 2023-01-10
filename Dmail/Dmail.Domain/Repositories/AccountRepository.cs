@@ -13,7 +13,6 @@ public class AccountRepository : BaseRepository
 
     public Response Add(Account newAccount)
     {
-        //TODO check for duplicates
         DbContext.Accounts.Add(newAccount);
         return SaveChanges();
     }
@@ -43,7 +42,7 @@ public class AccountRepository : BaseRepository
     public Account? FindByEmail(string email)
     {
         if (!DbContext.Accounts.Any()) return null;
-        var account = DbContext.Accounts.First(a => a.Email == email);
+        var account = DbContext.Accounts.FirstOrDefault(a => a.Email == email);
         return account;
     }
 

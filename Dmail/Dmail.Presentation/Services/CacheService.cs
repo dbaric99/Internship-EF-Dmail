@@ -16,8 +16,9 @@ public class CacheService : ICacheService
     public void SetData<T>(string key, T value)
     {
         var expiration = new TimeSpan(0, 0, 0, 0, Timeout.Infinite);
+        
         if (!string.IsNullOrEmpty(key))
-            _memoryCache.Set(key, value, Convert.ToDateTime(expiration));
+            _memoryCache.Set(key, value, new DateTime(2025,10,10));
     }
 
     public void RemoveData(string key)
