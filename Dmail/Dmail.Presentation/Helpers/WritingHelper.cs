@@ -16,7 +16,7 @@ public static class WritingHelper
         }
         Console.WriteLine("----- Events -----");
         
-        var navigatedEvent = PrintEventAndSelect(allEvents.OrderByDescending(e=>e.DateAndTime).ToList());
+        var navigatedEvent = PrintEventAndSelect(allEvents.OrderByDescending(e=>e.DateAndTime).ToList(), true);
 
         if (navigatedEvent is not null)
         {
@@ -24,7 +24,7 @@ public static class WritingHelper
         }
     }
 
-    private static Event PrintEventAndSelect(List<Event> userEvents)
+    public static Event PrintEventAndSelect(List<Event> userEvents, bool shouldSelect)
     {
         for (int i = 1; i < userEvents.Count; i++)
         {
@@ -32,6 +32,8 @@ public static class WritingHelper
             Console.WriteLine($"{i} - {current.Title} - {current.Sender.Email}");
         }
 
+        if (!shouldSelect) return null;
+        
         var num = InputHelper.NumberInput("Which event do you wish to open", 1, userEvents.Count);
 
         return num == 0 ? null : userEvents[num - 1];
@@ -67,7 +69,7 @@ public static class WritingHelper
         }
         Console.WriteLine("----- Emails -----");
         
-        var navigatedEmail = PrintMailAndSelect(allEmails.OrderByDescending(e=>e.DateAndTime).ToList());
+        var navigatedEmail = PrintMailAndSelect(allEmails.OrderByDescending(e=>e.DateAndTime).ToList(), true);
 
         if (navigatedEmail is not null)
         {
@@ -75,7 +77,7 @@ public static class WritingHelper
         }
     }
 
-    private static Email PrintMailAndSelect(List<Email> emails)
+    public static Email PrintMailAndSelect(List<Email> emails, bool shouldSelect)
     {
         for (int i = 1; i < emails.Count; i++)
         {
@@ -83,6 +85,8 @@ public static class WritingHelper
             Console.WriteLine($"{i} - {current.Title} - {current.Sender.Email}");
         }
 
+        if (!shouldSelect) return null;
+        
         var num = InputHelper.NumberInput("Which email do you wish to open", 1, emails.Count);
 
         return num == 0 ? null : emails[num - 1];

@@ -1,5 +1,6 @@
 using Dmail.Domain.Repositories;
 using Dmail.Presentation.Abstractions;
+using Dmail.Presentation.Helpers;
 using Dmail.Presentation.Services;
 
 namespace Dmail.Presentation.Actions.Inbox;
@@ -25,5 +26,19 @@ public class MailBySenderAction : IAction
 
         var selectedEvents = _eventRepository.SearchByAccountAddress(searchToken);
         var selectedEmails = _emailRepository.SearchByAccountAddress(searchToken);
+
+        if (selectedEmails.Count == 0)
+            Console.WriteLine("----- No Emails -----");
+        else
+        {
+            WritingHelper.PrintMailAndSelect(selectedEmails, false);
+        }
+
+        if (selectedEvents.Count == 0)
+            Console.WriteLine("----- No Events -----");
+        else
+        {
+            WritingHelper.PrintEventAndSelect(selectedEvents, false);
+        }
     }
 }
