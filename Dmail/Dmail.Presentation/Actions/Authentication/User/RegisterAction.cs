@@ -37,7 +37,7 @@ public class RegisterAction : IAction
         
         Console.Write("Password: ");
         var password = PasswordHelper.PasswordInput();
-        Console.Write("Repeat password: ");
+        Console.WriteLine("Repeat password: ");
         var repeatedPassword = PasswordHelper.PasswordInput();
 
         if (password != repeatedPassword)
@@ -51,6 +51,8 @@ public class RegisterAction : IAction
         }
 
         var newUser = new Data.Entities.Models.Account(email, password);
+        
+        //TODO this next line is null, check why
         _accountRepository.Add(newUser);
         _cacheService.SetData("authUser", newUser);
     }

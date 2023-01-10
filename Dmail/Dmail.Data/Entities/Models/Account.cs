@@ -10,10 +10,15 @@ public class Account : User
     public ICollection<Event> SentEvents { get; set; } = new List<Event>();
     public ICollection<Attendance> AttendedEvents { get; set; } = new List<Attendance>();
 
-    public Account(string email, string password) : base()
+    public Account(string email, string password)
     {
         Email = email;
         Password = password;
+        Deactivated = false;
+    }
+
+    public Account() : base()
+    {
         Deactivated = false;
     }
 }

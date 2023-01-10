@@ -1828,6 +1828,16 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
         }
+      },
+      "UtilityLibrary/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/UtilityLibrary.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/UtilityLibrary.dll": {}
+        }
       }
     }
   },
@@ -5722,6 +5732,11 @@
         "system.xml.xmldocument.4.3.0.nupkg.sha512",
         "system.xml.xmldocument.nuspec"
       ]
+    },
+    "UtilityLibrary/1.0.0": {
+      "type": "project",
+      "path": "../UtilityLibrary/UtilityLibrary.csproj",
+      "msbuildProject": "../UtilityLibrary/UtilityLibrary.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -5731,7 +5746,8 @@
       "Microsoft.EntityFrameworkCore.Tools.DotNet >= 2.0.3",
       "Microsoft.Extensions.Configuration >= 7.0.0",
       "Microsoft.Extensions.Configuration.Xml >= 7.0.0",
-      "Npgsql.EntityFrameworkCore.PostgreSQL >= 7.0.1"
+      "Npgsql.EntityFrameworkCore.PostgreSQL >= 7.0.1",
+      "UtilityLibrary >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -5759,7 +5775,11 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "/Users/dbaric/Documents/Internship/Internship-7-EF-Dmail/Dmail/UtilityLibrary/UtilityLibrary.csproj": {
+              "projectPath": "/Users/dbaric/Documents/Internship/Internship-7-EF-Dmail/Dmail/UtilityLibrary/UtilityLibrary.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -5815,7 +5835,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.100/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.101/RuntimeIdentifierGraph.json"
       }
     }
   }

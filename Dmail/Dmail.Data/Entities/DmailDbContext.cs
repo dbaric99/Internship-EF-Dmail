@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using Dmail.Data.Entities.Models;
 using Dmail.Data.Seed;
 using Microsoft.EntityFrameworkCore;
@@ -51,7 +52,7 @@ public class DmailDbContext : DbContext
             .HasIndex(a => a.Email)
             .IsUnique();
 
-        //DatabaseSeeder.Seed(modelBuilder);
+        DatabaseSeeder.Seed(modelBuilder);
         base.OnModelCreating(modelBuilder);
     }
 }

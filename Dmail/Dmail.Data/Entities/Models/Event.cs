@@ -8,4 +8,9 @@ public class Event : MailType
     {
         
     }
+
+    public Event() : base()
+    {
+        
+    }
 }

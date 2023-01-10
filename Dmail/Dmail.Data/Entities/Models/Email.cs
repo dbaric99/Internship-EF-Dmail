@@ -11,4 +11,9 @@ public class Email : MailType
     {
         Content = content;
     }
+
+    public Email() : base()
+    {
+        
+    }
 }

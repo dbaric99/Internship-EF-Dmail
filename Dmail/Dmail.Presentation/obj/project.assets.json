@@ -2007,7 +2007,8 @@
           "Microsoft.EntityFrameworkCore.Tools.DotNet": "2.0.3",
           "Microsoft.Extensions.Configuration": "7.0.0",
           "Microsoft.Extensions.Configuration.Xml": "7.0.0",
-          "Npgsql.EntityFrameworkCore.PostgreSQL": "7.0.1"
+          "Npgsql.EntityFrameworkCore.PostgreSQL": "7.0.1",
+          "UtilityLibrary": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Dmail.Data.dll": {}
@@ -2020,13 +2021,24 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
-          "Dmail.Data": "1.0.0"
+          "Dmail.Data": "1.0.0",
+          "System.Configuration.ConfigurationManager": "7.0.0"
         },
         "compile": {
           "bin/placeholder/Dmail.Domain.dll": {}
         },
         "runtime": {
           "bin/placeholder/Dmail.Domain.dll": {}
+        }
+      },
+      "UtilityLibrary/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/UtilityLibrary.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/UtilityLibrary.dll": {}
         }
       }
     }
@@ -6156,6 +6168,11 @@
       "type": "project",
       "path": "../Dmail.Domain/Dmail.Domain.csproj",
       "msbuildProject": "../Dmail.Domain/Dmail.Domain.csproj"
+    },
+    "UtilityLibrary/1.0.0": {
+      "type": "project",
+      "path": "../UtilityLibrary/UtilityLibrary.csproj",
+      "msbuildProject": "../UtilityLibrary/UtilityLibrary.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -6234,7 +6251,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.100/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.101/RuntimeIdentifierGraph.json"
       }
     }
   }

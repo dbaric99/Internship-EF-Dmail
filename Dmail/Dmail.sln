@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dmail.Domain", "Dmail.Domai
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dmail.Data", "Dmail.Data\Dmail.Data.csproj", "{05AA6E87-7C3F-4D2C-BFA7-29CE0AB1B6B1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UtilityLibrary", "UtilityLibrary\UtilityLibrary.csproj", "{2EE3B75F-345E-4A07-BEA4-C7ECB375F2CD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{05AA6E87-7C3F-4D2C-BFA7-29CE0AB1B6B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05AA6E87-7C3F-4D2C-BFA7-29CE0AB1B6B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05AA6E87-7C3F-4D2C-BFA7-29CE0AB1B6B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2EE3B75F-345E-4A07-BEA4-C7ECB375F2CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EE3B75F-345E-4A07-BEA4-C7ECB375F2CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EE3B75F-345E-4A07-BEA4-C7ECB375F2CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EE3B75F-345E-4A07-BEA4-C7ECB375F2CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

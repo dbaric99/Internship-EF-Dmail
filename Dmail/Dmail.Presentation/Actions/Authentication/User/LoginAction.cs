@@ -24,16 +24,17 @@ public class LoginAction : IAction
     {
         Console.Write("Email: ");
         var email = Console.ReadLine();
-        if (!ValidationHelper.EmailValidation(email))
-        {
-            MessageHelper.PrintErrorMessage("Wrong email format! Email should look like: example@domain.com");
-            return;
-        }
 
         var targetUser = _accountRepository.FindByEmail(email);
         if (targetUser is null)
         {
             MessageHelper.PrintErrorMessage($"Account with email: {email} not found");
+            return;
+        }
+
+        if (targetUser.Deactivated)
+        {
+            MessageHelper.PrintErrorMessage("This account is disabled, please contact admin about re-activation of your account");
             return;
         }
             
@@ -42,6 +43,7 @@ public class LoginAction : IAction
         if (password != targetUser.Password)
         {
             MessageHelper.PrintErrorMessage($"Password does not match with user: {email}");
+            Thread.Sleep(30000);
             return;
         }
 

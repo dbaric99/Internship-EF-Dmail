@@ -951,7 +951,8 @@
           "Microsoft.EntityFrameworkCore.Tools.DotNet": "2.0.3",
           "Microsoft.Extensions.Configuration": "7.0.0",
           "Microsoft.Extensions.Configuration.Xml": "7.0.0",
-          "Npgsql.EntityFrameworkCore.PostgreSQL": "7.0.1"
+          "Npgsql.EntityFrameworkCore.PostgreSQL": "7.0.1",
+          "UtilityLibrary": "1.0.0"
         },
         "runtime": {
           "Dmail.Data.dll": {}
@@ -959,10 +960,16 @@
       },
       "Dmail.Domain/1.0.0": {
         "dependencies": {
-          "Dmail.Data": "1.0.0"
+          "Dmail.Data": "1.0.0",
+          "System.Configuration.ConfigurationManager": "7.0.0"
         },
         "runtime": {
           "Dmail.Domain.dll": {}
+        }
+      },
+      "UtilityLibrary/1.0.0": {
+        "runtime": {
+          "UtilityLibrary.dll": {}
         }
       }
     }
@@ -1609,6 +1616,11 @@
       "sha512": ""
     },
     "Dmail.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "UtilityLibrary/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

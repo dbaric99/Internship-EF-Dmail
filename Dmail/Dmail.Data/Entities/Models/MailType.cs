@@ -15,4 +15,9 @@ public abstract class MailType
         Title = title;
         DateAndTime = dateAndTime;
     }
+
+    public MailType()
+    {
+        
+    }
 }
