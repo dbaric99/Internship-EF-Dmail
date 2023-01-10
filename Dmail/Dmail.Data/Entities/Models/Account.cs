@@ -10,6 +10,8 @@ public class Account : User
     public ICollection<Event> SentEvents { get; set; } = new List<Event>();
     public ICollection<Attendance> AttendedEvents { get; set; } = new List<Attendance>();
 
+    public ICollection<SpamAccount> SpamAccounts { get; set; } = new List<SpamAccount>();
+
     public Account(string email, string password)
     {
         Email = email;

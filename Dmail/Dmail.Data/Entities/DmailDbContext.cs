@@ -21,6 +21,8 @@ public class DmailDbContext : DbContext
     public DbSet<Email> Emails => Set<Email>();
     public DbSet<Event> Events => Set<Event>();
 
+    public DbSet<SpamAccount> SpamAccounts => Set<SpamAccount>();
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Attendance>()
@@ -47,6 +49,15 @@ public class DmailDbContext : DbContext
             .HasOne(e => e.Receiver)
             .WithMany(r => r.ReceivedEmails)
             .HasForeignKey(e => e.ReceiverId);
+
+        modelBuilder.Entity<SpamAccount>()
+            .HasKey(sa => new { sa.AccountId, sa.AccountSpamId });
+
+        modelBuilder.Entity<SpamAccount>()
+            .HasOne(s => s.Account)
+            .WithMany(a => a.SpamAccounts)
+            .HasForeignKey(sa => sa.AccountSpamId)
+            .OnDelete(DeleteBehavior.Cascade);
 
         modelBuilder.Entity<Account>()
             .HasIndex(a => a.Email)
