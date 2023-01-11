@@ -25,26 +25,16 @@ public class NewMailAction : IAction
     {
         var authUser = _cacheService.GetData<Account>("authUser");
         
-        Console.Write("\nInput receiving email address or addresses: ");
+        Console.Write("\nInput receiving email address or addresses (separated by comma): ");
         var receiversString = Console.ReadLine().Trim();
-        var receivers = EmailReceivers(receiversString);
+        var receivers = InputHelper.EmailReceiversInput(receiversString, _accountRepository);
 
         if (receivers.Count == 0)
         {
             MessageHelper.PrintErrorMessage("No valid email address!");
             return;
         }
-        foreach (var rec in receivers)
-        {
-            if (_accountRepository.FindByEmail(rec) is null)
-            {
-                MessageHelper.PrintErrorMessage($"Email {rec} is not valid!");
-                receivers.Remove(rec);
-            }
-        }
 
-        if (receivers.Count == 0) return;
-        
         Console.Write("\nEmail title: ");
         var title = Console.ReadLine();
 
@@ -70,28 +60,5 @@ public class NewMailAction : IAction
                 ReceiverId = recId,
             });
         }
-    }
-
-    public List<string> EmailReceivers(string receivers)
-    {
-        var receiversList = new List<string>();
-
-        if (!receivers.Contains(','))
-        {
-            if (ValidationHelper.EmailValidation(receivers))
-            {
-                receiversList.Add(receivers);
-            }
-        }
-        else if (receivers.Contains(','))
-        {
-            foreach (var receiver in receivers.Split(','))
-            {
-                if(ValidationHelper.EmailValidation(receiver))
-                    receiversList.Add(receiver);
-            }
-        }
-
-        return receiversList;
     }
 }

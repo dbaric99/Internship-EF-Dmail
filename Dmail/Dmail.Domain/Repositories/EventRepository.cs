@@ -62,4 +62,18 @@ public class EventRepository : BaseRepository
     {
         return DbContext.Events.Where(ev => ev.SenderId == senderId).ToList();
     }
+    
+    public int GetEventId(Event targetEvent)
+    {
+        foreach (var ev in DbContext.Events)
+        {
+            if (ev.SenderId == targetEvent.SenderId && ev.Title == targetEvent.Title &&
+                ev.DateAndTime == targetEvent.DateAndTime)
+            {
+                return ev.Id;
+            }
+        }
+
+        return -1;
+    }
 }

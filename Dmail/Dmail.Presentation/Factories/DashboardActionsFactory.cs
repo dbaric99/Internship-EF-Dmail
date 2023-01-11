@@ -20,7 +20,7 @@ public class DashboardActionsFactory
             new OutboxAction(RepositoryFactory.Create<EmailRepository>(), RepositoryFactory.Create<EventRepository>()),
             new SpamAction(RepositoryFactory.Create<EmailRepository>(), RepositoryFactory.Create<EventRepository>(), RepositoryFactory.Create<SpamAccountRepository>()),
             new NewMailAction(RepositoryFactory.Create<EmailRepository>(), RepositoryFactory.Create<AccountRepository>()),
-            new NewEventAction(RepositoryFactory.Create<EventRepository>()),
+            new NewEventAction(RepositoryFactory.Create<EventRepository>(), RepositoryFactory.Create<AccountRepository>(), RepositoryFactory.Create<AttendanceRepository>()),
             new ProfileSettingsAction(RepositoryFactory.Create<AccountRepository>()),
             new SignOutAction(RepositoryFactory.Create<AccountRepository>()),
             new ExitMenuAction()
