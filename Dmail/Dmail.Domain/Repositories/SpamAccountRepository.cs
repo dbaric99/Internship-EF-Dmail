@@ -27,9 +27,9 @@ public class SpamAccountRepository : BaseRepository
         var spamAccountsForUser = GetSpamAccountsForUser(userId);
         if (spamAccountsForUser is null) return null;
 
-        var spamEmails = (from email in DbContext.Emails let isSpam = spamAccountsForUser.Where(spam => spam.Id == email.SenderId) where email.ReceiverId == userId && isSpam is not null select email).ToList();
+        var spamEmails = (from email in DbContext.Emails let isSpam = spamAccountsForUser.Where(spam => spam.Id == email.SenderId) where email.ReceiverId == userId && (isSpam != null) select email).ToList();
 
-        var spamEvents = (from ev in DbContext.Events let isSpam = spamAccountsForUser.FirstOrDefault(spam => spam.Id == ev.SenderId) let isInInbox = ev.EventAttendance.FirstOrDefault(at => at.AttendeeId == userId) where isInInbox is not null && isSpam is not null select ev).ToList();
+        var spamEvents = (from ev in DbContext.Events let isSpam = spamAccountsForUser.FirstOrDefault(spam => spam.Id == ev.SenderId) let isInInbox = ev.EventAttendance.FirstOrDefault(at => at.AttendeeId == userId) where (isInInbox != null) && (isSpam != null) select ev).ToList();
 
         return Tuple.Create(spamEmails, spamEvents);
     }
