@@ -56,4 +56,14 @@ public class EmailRepository : BaseRepository
     {
         return DbContext.Emails.Where(email => email.SenderId == senderId).ToList();
     }
+
+    public Response MarkUnread(int emailId)
+    {
+        var emailToUpdate = DbContext.Emails.Find(emailId);
+        if (emailToUpdate is null) return Response.NotFound;
+
+        emailToUpdate.IsRead = false;
+
+        return SaveChanges();
+    }
 }

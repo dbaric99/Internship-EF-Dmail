@@ -11,9 +11,9 @@ public class SpamAccountRepository : BaseRepository
         
     }
 
-    public Response Add(SpamAccount newSpamAccount)
+    public Response Add(int spamAccountId, int authUserId)
     {
-        DbContext.SpamAccounts.Add(newSpamAccount);
+        DbContext.SpamAccounts.Add(new SpamAccount{AccountSpamId = spamAccountId, AccountId = authUserId});
         return SaveChanges();
     }
 

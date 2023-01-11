@@ -1,5 +1,7 @@
 using Dmail.Data.Entities.Models;
 using Dmail.Domain.Repositories;
+using Dmail.Presentation.Extensions;
+using Dmail.Presentation.Factories;
 
 namespace Dmail.Presentation.Helpers;
 
@@ -7,21 +9,23 @@ public static class WritingHelper
 {
     #region ReadEvents
 
-    public static void HandleReadEvents(Account authUser, List<Event> allEvents, EventRepository eventRepository)
+    public static Event HandleReadEvents(Account authUser, List<Event> allEvents, EventRepository eventRepository, bool shouldSelect)
     {
         if (allEvents.Count == 0)
         {
             Console.WriteLine("----- No Events -----");
-            return;
+            return null;
         }
         Console.WriteLine("----- Events -----");
         
-        var navigatedEvent = PrintEventAndSelect(allEvents.OrderByDescending(e=>e.DateAndTime).ToList(), true);
+        var navigatedEvent = PrintEventAndSelect(allEvents.OrderByDescending(e=>e.DateAndTime).ToList(), shouldSelect);
 
         if (navigatedEvent is not null)
         {
             OpenEvent(navigatedEvent, eventRepository);
         }
+
+        return navigatedEvent;
     }
 
     public static Event PrintEventAndSelect(List<Event> userEvents, bool shouldSelect)
@@ -55,26 +59,31 @@ public static class WritingHelper
         eventRepository.SetRead(selectedEvent.Id);
         
         Console.WriteLine(new String('-', 25));
+        
+        var inboxActionsFactory = InboxMiniActionsFactory.CreateActions(selectedEvent);
+        inboxActionsFactory.PrintActionsAndOpen();
     }
 
     #endregion
 
     #region ReadEmails
-    public static void HandleReadEmails(Account authUser, List<Email> allEmails, EmailRepository emailRepository)
+    public static Email HandleReadEmails(Account authUser, List<Email> allEmails, EmailRepository emailRepository, bool shouldSelect)
     {
         if (allEmails.Count == 0)
         {
             Console.WriteLine("----- No Emails -----");
-            return;
+            return null;
         }
         Console.WriteLine("----- Emails -----");
         
-        var navigatedEmail = PrintMailAndSelect(allEmails.OrderByDescending(e=>e.DateAndTime).ToList(), true);
+        var navigatedEmail = PrintMailAndSelect(allEmails.OrderByDescending(e=>e.DateAndTime).ToList(), shouldSelect);
 
         if (navigatedEmail is not null)
         {
             OpenMail(navigatedEmail, emailRepository);
         }
+
+        return navigatedEmail;
     }
 
     public static Email PrintMailAndSelect(List<Email> emails, bool shouldSelect)
@@ -106,6 +115,8 @@ public static class WritingHelper
         emailRepository.SetRead(email.Id);
         
         Console.WriteLine(new String('-', 25));
+        var inboxActionsFactory = InboxMiniActionsFactory.CreateActions(email);
+        inboxActionsFactory.PrintActionsAndOpen();
     }
     #endregion
 }

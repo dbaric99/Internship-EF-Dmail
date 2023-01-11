@@ -1,6 +1,8 @@
 using Dmail.Data.Entities.Models;
 using Dmail.Domain.Repositories;
 using Dmail.Presentation.Abstractions;
+using Dmail.Presentation.Extensions;
+using Dmail.Presentation.Factories;
 using Dmail.Presentation.Helpers;
 using Dmail.Presentation.Services;
 
@@ -36,7 +38,7 @@ public class UnReadMailAction : IAction
             unreadEvents = _eventRepository.GetUnReadEvents().Where(e=>e.Sender == authUser || _eventRepository.CheckIfUserIsAttendingEvent(authUser.Id, e)).ToList();   
         }
 
-        WritingHelper.HandleReadEmails(authUser, unreadEmails, _emailRepository);
-        WritingHelper.HandleReadEvents(authUser, unreadEvents, _eventRepository);
+        WritingHelper.HandleReadEmails(authUser, unreadEmails, _emailRepository, true);
+        WritingHelper.HandleReadEvents(authUser, unreadEvents, _eventRepository, true);
     }
 }

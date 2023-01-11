@@ -40,4 +40,9 @@ public class AttendanceRepository : BaseRepository
         
         return SaveChanges();
     }
+
+    public void SetAttendance(bool isAttending, Event attendingEvent, Account authUser)
+    {
+        
+    }
 }

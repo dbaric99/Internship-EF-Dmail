@@ -75,4 +75,14 @@ public class EventRepository : BaseRepository
 
         return -1;
     }
+    
+    public Response MarkUnread(int eventId)
+    {
+        var eventToUpdate = DbContext.Emails.Find(eventId);
+        if (eventToUpdate is null) return Response.NotFound;
+
+        eventToUpdate.IsRead = false;
+
+        return SaveChanges();
+    }
 }

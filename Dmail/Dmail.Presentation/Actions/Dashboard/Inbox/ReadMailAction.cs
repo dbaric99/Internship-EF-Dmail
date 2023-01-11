@@ -1,6 +1,8 @@
 using Dmail.Data.Entities.Models;
 using Dmail.Domain.Repositories;
 using Dmail.Presentation.Abstractions;
+using Dmail.Presentation.Extensions;
+using Dmail.Presentation.Factories;
 using Dmail.Presentation.Helpers;
 using Dmail.Presentation.Services;
 
@@ -36,8 +38,8 @@ public class ReadMailAction : IAction
             readEvents = _eventRepository.GetReadEvents().Where(e=>e.Sender == authUser || _eventRepository.CheckIfUserIsAttendingEvent(authUser.Id, e)).ToList();   
         }
 
-        WritingHelper.HandleReadEmails(authUser, readEmails, _emailRepository);
-        WritingHelper.HandleReadEvents(authUser, readEvents, _eventRepository);
+        WritingHelper.HandleReadEmails(authUser, readEmails, _emailRepository, true);
+        WritingHelper.HandleReadEvents(authUser, readEvents, _eventRepository, true);
     }
 
    
