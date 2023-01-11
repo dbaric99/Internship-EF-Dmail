@@ -66,7 +66,7 @@ public class NewEventAction : IAction
         foreach (var attendee in attendeesList)
         {
             Console.Write($"\nDid user {attendee} confirm they are coming (y/n): ");
-            var isAttending = InputHelper.IsPersonAttendingAnEventInput(Console.ReadLine());
+            var isAttending = InputHelper.IsInputConforming(Console.ReadLine());
             
             _attendanceRepository.Add(new Attendance
             {

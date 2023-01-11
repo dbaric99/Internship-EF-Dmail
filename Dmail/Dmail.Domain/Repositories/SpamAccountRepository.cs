@@ -17,16 +17,6 @@ public class SpamAccountRepository : BaseRepository
         return SaveChanges();
     }
 
-    public Response Delete(int idToDelete)
-    {
-        var spamAccountToDelete = DbContext.SpamAccounts.Find(idToDelete);
-        if (spamAccountToDelete is null) return Response.NotFound;
-
-        DbContext.SpamAccounts.Remove(spamAccountToDelete);
-        
-        return SaveChanges();
-    }
-
     private List<Account> GetSpamAccountsForUser(int userId)
     {
         return (from spamAcc in DbContext.SpamAccounts where spamAcc.AccountId == userId select spamAcc.AccountSpam).ToList();
@@ -42,5 +32,23 @@ public class SpamAccountRepository : BaseRepository
         var spamEvents = (from ev in DbContext.Events let isSpam = spamAccountsForUser.FirstOrDefault(spam => spam.Id == ev.SenderId) let isInInbox = ev.EventAttendance.FirstOrDefault(at => at.AttendeeId == userId) where isInInbox is not null && isSpam is not null select ev).ToList();
 
         return Tuple.Create(spamEmails, spamEvents);
+    }
+
+    public Response ChangeIfSpam(int authUserId, int spamAccountId)
+    {
+        SpamAccount choosenSpamAccount = new SpamAccount();
+        foreach (var spamAcc in DbContext.SpamAccounts)
+        {
+            if (spamAcc.AccountId == authUserId && spamAcc.AccountSpamId == spamAccountId)
+            {
+                choosenSpamAccount = spamAcc;
+            }
+        }
+
+        if (choosenSpamAccount is null) return Response.NotFound;
+        
+        DbContext.SpamAccounts.Remove(choosenSpamAccount);
+
+        return SaveChanges();
     }
 }

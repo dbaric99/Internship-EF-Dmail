@@ -2,6 +2,7 @@ using Dmail.Domain.Factories;
 using Dmail.Domain.Repositories;
 using Dmail.Presentation.Abstractions;
 using Dmail.Presentation.Actions;
+using Dmail.Presentation.Actions.Admin;
 using Dmail.Presentation.Actions.Authentication;
 using Dmail.Presentation.Actions.User;
 using Dmail.Presentation.Extensions;
@@ -17,6 +18,7 @@ public class AuthenticationActionsFactory
         {
             new LoginAction(RepositoryFactory.Create<AccountRepository>()),
             new RegisterAction(RepositoryFactory.Create<AccountRepository>()),
+            new AdminAction(RepositoryFactory.Create<AccountRepository>(), RepositoryFactory.Create<AdminRepository>()),
             new ExitMenuAction()
         };
 

@@ -27,18 +27,6 @@ public class AccountRepository : BaseRepository
         return SaveChanges();
     }
 
-    public Response Update(Account updatedAccount, int idToUpdate)
-    {
-        var accountToUpdate = DbContext.Accounts.Find(idToUpdate);
-        if (accountToUpdate is null) return Response.NotFound;
-
-        accountToUpdate.Password = updatedAccount.Password;
-        accountToUpdate.Email = updatedAccount.Email;
-        accountToUpdate.Deactivated = updatedAccount.Deactivated;
-        
-        return SaveChanges();
-    }
-
     public Account? FindByEmail(string email)
     {
         if (!DbContext.Accounts.Any()) return null;
@@ -46,12 +34,9 @@ public class AccountRepository : BaseRepository
         return account;
     }
 
-    public void PrintAllAccounts()
+    public List<Account> GetAllAccounts()
     {
-        foreach (var account in DbContext.Accounts)
-        {
-            Console.WriteLine("Email: " + account.Email + " Deactivated: " + account.Deactivated);
-        }
+        return DbContext.Accounts.ToList();
     }
 
     public List<Account> GetAllUsersWithActivity(int authUserId)
@@ -95,5 +80,15 @@ public class AccountRepository : BaseRepository
     public bool CheckIfSpamForUser(int authUserId, int accountId)
     {
         return Enumerable.Any(DbContext.SpamAccounts, spam => spam.AccountId == authUserId && spam.AccountSpamId == accountId);
+    }
+
+    public Response AccountAdministration(int accountId)
+    {
+        var accountToUpdate = DbContext.Accounts.Find(accountId);
+        if (accountToUpdate is null) return Response.NotFound;
+        
+        accountToUpdate.Deactivated = !accountToUpdate.Deactivated;
+        
+        return SaveChanges();
     }
 }

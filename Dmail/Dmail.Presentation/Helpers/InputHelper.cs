@@ -53,7 +53,7 @@ public static class InputHelper
         return receiversList;
     }
 
-    public static bool IsPersonAttendingAnEventInput(string providedInput)
+    public static bool IsInputConforming(string providedInput)
     {
         return providedInput.Trim().ToLower() == "y";
     }
