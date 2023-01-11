@@ -18,7 +18,7 @@ public class DashboardActionsFactory
         {
             new InboxAction(RepositoryFactory.Create<EmailRepository>(), RepositoryFactory.Create<EventRepository>()),
             new OutboxAction(RepositoryFactory.Create<EmailRepository>(), RepositoryFactory.Create<EventRepository>()),
-            new SpamAction(RepositoryFactory.Create<EmailRepository>(), RepositoryFactory.Create<EventRepository>()),
+            new SpamAction(RepositoryFactory.Create<EmailRepository>(), RepositoryFactory.Create<EventRepository>(), RepositoryFactory.Create<SpamAccountRepository>()),
             new NewMailAction(RepositoryFactory.Create<EmailRepository>()),
             new NewEventAction(RepositoryFactory.Create<EventRepository>()),
             new ProfileSettingsAction(RepositoryFactory.Create<AccountRepository>()),
