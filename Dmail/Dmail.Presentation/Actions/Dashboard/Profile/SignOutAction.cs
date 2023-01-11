@@ -1,3 +1,4 @@
+using Dmail.Data.Entities.Models;
 using Dmail.Domain.Repositories;
 using Dmail.Presentation.Abstractions;
 using Dmail.Presentation.Services;
@@ -19,6 +20,6 @@ public class SignOutAction : IAction
 
     public void Open()
     {
-        
+        _cacheService.SetData<Account>("authUser", null);
     }
 }
