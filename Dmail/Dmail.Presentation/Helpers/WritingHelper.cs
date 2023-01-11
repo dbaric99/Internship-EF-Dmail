@@ -88,7 +88,7 @@ public static class WritingHelper
 
     public static Email PrintMailAndSelect(List<Email> emails, bool shouldSelect)
     {
-        for (int i = 1; i < emails.Count; i++)
+        for (var i = 1; i < emails.Count; i++)
         {
             var current = emails[i-1];
             Console.WriteLine($"{i} - {current.Title} - {current.Sender.Email}");

@@ -48,7 +48,7 @@ public class ProfileSettingsAction : IAction
         {
             if (displaySpam && _accountRepository.CheckIfSpamForUser(authUserId, account.Id))
                 spamAccounts.Add(account);
-            else if(!displaySpam && !_accountRepository.CheckIfSpamForUser(authUserId, account.Id))
+            else
                 nonSpamAccounts.Add(account);
         }
 

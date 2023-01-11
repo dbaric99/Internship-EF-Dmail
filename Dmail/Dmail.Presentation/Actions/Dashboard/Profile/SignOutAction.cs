@@ -11,7 +11,7 @@ public class SignOutAction : IAction
     private readonly CacheService _cacheService = new();
     
     public int MenuIndex { get; set; }
-    public string Name { get; set; } = "Profile Settings";
+    public string Name { get; set; } = "Sign out";
 
     public SignOutAction(AccountRepository accountRepository)
     {
@@ -20,6 +20,9 @@ public class SignOutAction : IAction
 
     public void Open()
     {
-        _cacheService.SetData<Account>("authUser", null);
+        _cacheService.RemoveData("authUser");
+        var exit = new ExitMenuAction();
+        exit.Open();
+        
     }
 }

@@ -34,7 +34,7 @@ public class RespondToMailAction : IAction
             _emailRepository.Add(new Email
             {
                 Title = "Re: " + _mail.Title,
-                DateAndTime = DateTime.Now,
+                DateAndTime = DateTime.UtcNow,
                 IsRead = false,
                 SenderId = authUser.Id,
                 Content = content,
@@ -50,7 +50,7 @@ public class RespondToMailAction : IAction
             _emailRepository.Add(new Email
             {
                 Title = "Re: Event attendance: " + _mail.Title,
-                DateAndTime = DateTime.Now,
+                DateAndTime = DateTime.UtcNow,
                 IsRead = false,
                 SenderId = authUser.Id,
                 Content = isComing ? "Coming" : "Not coming",

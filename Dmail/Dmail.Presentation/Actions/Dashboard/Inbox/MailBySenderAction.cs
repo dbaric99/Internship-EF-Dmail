@@ -21,7 +21,7 @@ public class MailBySenderAction : IAction
     }
     public void Open()
     {
-        Console.WriteLine("Search from: ");
+        Console.Write("Search from: ");
         var searchToken = Console.ReadLine();
 
         var selectedEvents = _eventRepository.SearchByAccountAddress(searchToken);

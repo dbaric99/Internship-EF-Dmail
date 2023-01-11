@@ -36,8 +36,8 @@ public static class InputHelper
         {
             foreach (var receiver in receivers.Split(','))
             {
-                if(ValidationHelper.EmailValidation(receiver))
-                    receiversList.Add(receiver);
+                if(ValidationHelper.EmailValidation(receiver.Trim()))
+                    receiversList.Add(receiver.Trim());
             }
         }
 

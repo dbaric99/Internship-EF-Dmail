@@ -53,7 +53,7 @@ public class NewMailAction : IAction
             _emailRepository.Add(new Email
             {
                 Title = title,
-                DateAndTime = DateTime.Now,
+                DateAndTime = DateTime.UtcNow,
                 IsRead = false,
                 SenderId = authUser.Id,
                 Content = content,
