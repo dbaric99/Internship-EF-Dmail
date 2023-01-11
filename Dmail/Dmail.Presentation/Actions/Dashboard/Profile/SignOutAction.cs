@@ -1,6 +1,8 @@
 using Dmail.Data.Entities.Models;
 using Dmail.Domain.Repositories;
 using Dmail.Presentation.Abstractions;
+using Dmail.Presentation.Extensions;
+using Dmail.Presentation.Factories;
 using Dmail.Presentation.Services;
 
 namespace Dmail.Presentation.Actions.Profile;
@@ -21,8 +23,8 @@ public class SignOutAction : IAction
     public void Open()
     {
         _cacheService.RemoveData("authUser");
-        var exit = new ExitMenuAction();
-        exit.Open();
         
+        var mainMenuActions = MainMenuFactory.CreateActions();
+        mainMenuActions.PrintActionsAndOpen();
     }
 }
