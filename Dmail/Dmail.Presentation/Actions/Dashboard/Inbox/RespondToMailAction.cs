@@ -9,17 +9,17 @@ namespace Dmail.Presentation.Actions.Inbox;
 public class RespondToMailAction : IAction
 {
     private readonly EmailRepository _emailRepository;
-    private readonly EventRepository _eventRepository;
+    private readonly AttendanceRepository _attendanceRepository;
     private MailType _mail;
     private readonly CacheService _cacheService = new();
     
     public int MenuIndex { get; set; }
     public string Name { get; set; } = "Respond";
 
-    public RespondToMailAction(EmailRepository emailRepository, EventRepository eventRepository, MailType mail)
+    public RespondToMailAction(EmailRepository emailRepository, AttendanceRepository attendanceRepository, MailType mail)
     {
         _emailRepository = emailRepository;
-        _eventRepository = eventRepository;
+        _attendanceRepository = attendanceRepository;
         _mail = mail;
     }
 
@@ -46,7 +46,16 @@ public class RespondToMailAction : IAction
         {
             Console.Write("\nConfirm participation (y/n): ");
             var isComing = InputHelper.IsInputConforming(Console.ReadLine());
-            _attendanceRepo
+            _attendanceRepository.SetAttendance(isComing, _mail as Event, authUser);
+            _emailRepository.Add(new Email
+            {
+                Title = "Re: Event attendance: " + _mail.Title,
+                DateAndTime = DateTime.Now,
+                IsRead = false,
+                SenderId = authUser.Id,
+                Content = isComing ? "Coming" : "Not coming",
+                ReceiverId = _mail.SenderId
+            });
         }
     }
 }

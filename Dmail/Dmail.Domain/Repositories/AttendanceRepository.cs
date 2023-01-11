@@ -41,8 +41,14 @@ public class AttendanceRepository : BaseRepository
         return SaveChanges();
     }
 
-    public void SetAttendance(bool isAttending, Event attendingEvent, Account authUser)
+    public Response SetAttendance(bool isAttending, Event attendingEvent, Account authUser)
     {
-        
+        var targetAttendance = DbContext.Attendances.FirstOrDefault(a => a.Event == attendingEvent && a.Attendee == authUser);
+
+        if (targetAttendance is null) return Response.NotFound;
+
+        targetAttendance.IsAttending = isAttending;
+
+        return SaveChanges();
     }
 }

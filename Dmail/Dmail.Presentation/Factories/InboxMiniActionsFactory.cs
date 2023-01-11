@@ -17,7 +17,7 @@ public class InboxMiniActionsFactory
             new MarkUnreadAction(RepositoryFactory.Create<EmailRepository>(), RepositoryFactory.Create<EventRepository>(), mail),
             new MarkSpamAction(RepositoryFactory.Create<SpamAccountRepository>(), mail),
             new DeleteMailAction(RepositoryFactory.Create<EmailRepository>(), RepositoryFactory.Create<EventRepository>(), mail),
-            new RespondToMailAction(RepositoryFactory.Create<EmailRepository>(), RepositoryFactory.Create<EventRepository>(), mail),
+            new RespondToMailAction(RepositoryFactory.Create<EmailRepository>(), RepositoryFactory.Create<AttendanceRepository>(), mail),
             new ExitMenuAction()
         };
         
